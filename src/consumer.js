@@ -1,4 +1,4 @@
-process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = 0;
+//process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = 0;
 require('dotenv').config();
 const amqp = require('amqplib');
 const SongsService = require('./SongsService');
@@ -13,11 +13,11 @@ const init = async() => {
     const connection = await amqp.connect(process.env.RABBITMQ_SERVER);
     const channel = await connection.createChannel();
 
-    await channel.assertQueue('export:notes', {
+    await channel.assertQueue('export:songs', {
         durable: true,
     });
 
-    channel.consume('export:notes', listener.listen, { noAck: true });
+    channel.consume('export:songs', listener.listen, { noAck: true });
 
 };
 
