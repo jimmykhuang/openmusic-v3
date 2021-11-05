@@ -18,7 +18,8 @@ class MailSender {
 
     sendEmail(targetEmail, content) {
         const message = {
-            from: 'Notes Apps',
+
+            from: 'Songs Apps',
             to: targetEmail,
             subject: 'Ekspor Catatan',
             text: 'Terlampir hasil dari ekspor catatan',
